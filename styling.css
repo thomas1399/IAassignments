@@ -1,3 +1,111 @@
-﻿body
-{
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font-size: 16px;
 }
+
+body, html {
+  position: relative;
+  min-height: 100vh;
+}
+
+nav {
+  top: 0px;
+}
+
+nav * {
+  display: inline-block;
+}
+
+nav .nav-content {
+  height: 100%;
+  padding: 30px;
+  float: right;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+nav .nav-content li {
+  padding-right: 20px;
+}
+
+nav .title {
+  padding: 30px;
+  width: 450px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+nav .title h1 {
+  font-size: 32px;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  vertical-align: bottom;
+  padding: 10px;
+}
+
+nav .title img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 64px;
+}
+
+footer {
+  background-color: silver;
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid black;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: red;
+  }
+  .title {
+    max-width: 150px;
+  }
+  .title h1 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .nav-content {
+    -o-object-fit: contain;
+       object-fit: contain;
+    background: url(images/menu.png) no-repeat center;
+  }
+  .nav-content ul {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1023px) {
+  body {
+    background-color: purple;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    background-color: green;
+  }
+}
+/*# sourceMappingURL=styling.css.map */
