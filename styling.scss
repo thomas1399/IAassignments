@@ -1,6 +1,4 @@
 ﻿$fontSize: 16px;
-$navPadding: 30px;
-$defaultHeight: 100%;
 $spacing: 1rem;
 $minWidth: 8.33%;
 @mixin clearfix {
@@ -12,7 +10,7 @@ $minWidth: 8.33%;
   }
 * {
     box-sizing: border-box;
-    border: 1px solid black;
+    //border: 1px solid black;
     margin: 0;
     padding: 0;
     font-size: $fontSize;
@@ -41,12 +39,12 @@ body, html{
 nav{
     padding-bottom: $spacing;
 }
-.row{
+.nav-row{
     @include clearfix();
     .nav-left{
         min-width: 50%;
         float: left;
-        padding: $spacing 0 0 0;
+        padding: $spacing 0 0 $spacing;
         .title-img{
             object-fit: contain;
             height: 4*$fontSize;
@@ -80,6 +78,9 @@ nav{
                 display: none;
             }
             span{
+                margin: $spacing $spacing*2;
+                border-radius: 10px;
+                border: 2px solid black;
                 background: url(images/menu.png) no-repeat center;
                 float: right;
             }
@@ -88,24 +89,74 @@ nav{
         
     }
 }
-section{
+.section-row{
     padding:0 $spacing;
+    margin-bottom: $fontSize*4;
+    @include clearfix();
+    .section-item{
+        padding: 0;
+        height: 28vw;
+        background-color: rgb(236, 234, 234);
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+        .section-title{
+            @include clearfix();
+            p {
+                font-size: $fontSize*1.5;
+                float: right;
+                padding: $spacing/2 $spacing*2;
+                border-left: 2px solid black;
+                border-bottom: 2px solid black;
+                border-right: 1px solid black;
+            }
+        }
+        .section-content{
+            padding: $spacing*2 $spacing $spacing $spacing;
+            flex: 1;
+            p {
+                font-size: $fontSize;
+            }
+        }
+    }
+    @media only screen and (min-width:861px) and (max-width:1124px){
+        .col-4:nth-child(1){
+            width: 100%;
+        }
+        .col-4:nth-child(2){
+            width: 50%;
+        }
+        .col-4:nth-child(3){
+            width: 50%;
+        }
+        .section-item{
+            height: 50vh;
+        }
+    }
+    @media only screen and (max-width:860px){
+        .col-4{
+            width: 100%;
+        }
+        .section-item{
+            height: 50vh;
+        }
+    }
 }
-.section-item{
-    padding: 0;
-    height: 50vh;
-    background-color: silver;
-}
-.foot{
-    background-color: silver;
+
+.footer-row{
+    @include clearfix();
+    .foot{
+    background-color: rgb(236, 234, 234);
     padding: $spacing/2;
     position: absolute;
     bottom: 0;
     height: $fontSize*4;
     overflow: hidden;
     text-align: center;
-    border-top: 1px solid black;
+    border-top: 2px solid black;
 }
+}
+
 .grid-item{
     padding: 0 $spacing;
 }
