@@ -1,90 +1,111 @@
 ﻿$fontSize: 16px;
 $navPadding: 30px;
 $defaultHeight: 100%;
-
+$spacing: 1rem;
+$minWidth: 8.33%;
+@mixin clearfix {
+    &:after {
+      display: table;
+      clear: both;
+      content: "";
+    }
+  }
 * {
     box-sizing: border-box;
-  //  border: 1px solid black;
-    padding: 0px;
-    margin: 0px;
+    border: 1px solid black;
+    margin: 0;
+    padding: 0;
     font-size: $fontSize;
 }
 body, html{
     position: relative;
     min-height: 100vh;
 }
-nav {
-    top:0px;
-    * {
-        display: inline-block;
-    }
-    .nav-content {
-         height: 100%;
-         padding: $navPadding;
-         float: right;
-         display: inline-flex;
-         justify-content: flex-end;
-        li {
-         padding-right: 20px;
-        }
-     }
-    .title {
-        padding: $navPadding;
-        width: 450px;
-        display: inline-flex;
-        flex-direction: row;
-        h1 {
-            font-size: $fontSize*2;
-            flex-grow: 2;
-            vertical-align: bottom;
-            padding: 10px;
-        }
-        img{
+.col-1 {width:$minWidth;}
+.col-2 {width: $minWidth*2;}
+.col-3 {width: $minWidth*3;}
+.col-4 {width: $minWidth*4;}
+.col-5 {width: $minWidth*5;}
+.col-6 {width: 50%;}
+.col-7 {width:$minWidth*7;}
+.col-8 {width: $minWidth*8;}
+.col-9 {width: $minWidth*9;}
+.col-10 {width:$minWidth*10;}
+.col-11 {width: $minWidth*11;}
+.col-12 {width: $minWidth*12;}
+
+[class*="col-"]{
+    float: left;
+    padding: $spacing;
+}
+nav{
+    padding-bottom: $spacing;
+}
+.row{
+    @include clearfix();
+    .nav-left{
+        min-width: 50%;
+        float: left;
+        padding: $spacing 0 0 0;
+        .title-img{
             object-fit: contain;
-            height: $fontSize*4;
+            height: 4*$fontSize;
+            width: auto;
+            padding: 0 0 0 $spacing;
         }
+        .title-text{
+            padding: $spacing/2 $spacing;
+            font-size: 2*$fontSize;
+        }
+        @media only screen and (max-width:1023px){
+            width: 75%;
+        }
+        @media only screen and (max-width:600px){
+            .title-text{display:none;}
+        }
+    }
+    .nav-right{
+        
+        float: left;
+        padding: 0;
+        .grid-item{
+            padding: $spacing 0 0 0 ;
+            text-decoration: none;
+            color: darkslategrey;
+        }
+        @media only screen and (max-width:1023px){
+            width: 25%;
+            float: right;
+            a {
+                display: none;
+            }
+            span{
+                background: url(images/menu.png) no-repeat center;
+                float: right;
+            }
+
+        }
+        
     }
 }
-footer {
+section{
+    padding:0 $spacing;
+}
+.section-item{
+    padding: 0;
+    height: 50vh;
     background-color: silver;
-    padding: 5px;
+}
+.foot{
+    background-color: silver;
+    padding: $spacing/2;
     position: absolute;
     bottom: 0;
-    height: 50px;
+    height: $fontSize*4;
     overflow: hidden;
-    width: 100%;
     text-align: center;
     border-top: 1px solid black;
 }
-
-@media only screen and (max-width: 600px) {
-    body {
-      background-color: red;
-    }
-    .title {
-        max-width: 150px;
-        h1 {
-            display: none;
-        }
-    }
-  }
-@media only screen and (max-width: 1023px) {
-    .nav-content{
-        ul {
-            display: none;
-        }
-        object-fit: contain;
-        background: url(images/menu.png) no-repeat center
-    }
+.grid-item{
+    padding: 0 $spacing;
 }
-@media only screen and (min-width: 601px) and (max-width: 1023px) {
-    body{
-        background-color: purple;
-    }
-}
-@media only screen and (min-width: 1024px) {
-    body {
-      background-color: green;
-    }
-  }
-
