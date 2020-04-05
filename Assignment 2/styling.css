@@ -1,0 +1,15 @@
+* {
+    box-sizing:  border-box;
+}
+button {
+    padding: 5px 10px;
+    margin: auto 5px;
+}
+.col-4 {
+    width:200px;
+    display: inline-block;
+    margin: auto 45px;
+}
+.list-container{
+    width:600px;
+}
