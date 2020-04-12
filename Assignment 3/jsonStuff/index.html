@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8" />
+ <script type="text/javascript"
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ <script>
+    function display(){
+        $.getJSON("http://localhost/json/guitars.json", function(data){
+        var guitar = '';
+        $.each(data, function(key, value){
+            guitar += '<tr><td>' + value.Brand + '   ' + value.Model + '</td></tr>';
+        });
+        $('data-container').append(guitar);
+    });
+    }
+ </script>
+</head>
+<body>
+ <button onclick="display()">Display</button>
+ <table class="data-container">
+
+ </table>
+</body>
+</html>

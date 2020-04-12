@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>jQuery</title>
+        <script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            function edit(){
+                var text = $(this).text();
+                $(this).html("<input type='text' id='" +text + "' value='" + text +"'>");
+                $("#" + text).focus();
+                $('button').trigger('asdf');
+            };
+            function save(){
+                var text = $(this).children("input").val();
+                $(this).html(text);
+                $(this).one('click', edit);
+            }
+            $(document).ready(function () {
+                $('td').one('click', edit); 
+                $('td').on('focusout', save);  
+                //$('button').bind('asdf', function () { alert('The cake is a lie!'); });
+                //$('*').unbind();
+            });
+            
+        </script>
+    </head>
+    <body>
+        <table>
+            <tr><td>One</td></tr>
+            <tr><td>Two</td></tr>
+            <tr><td>Three</td></tr>
+            <tr><td>...</td></tr>
+           </table>
+        <button>Does stuff</button>
+    </body>
+</html>
