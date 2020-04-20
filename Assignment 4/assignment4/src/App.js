@@ -1,8 +1,11 @@
 import React from 'react';
+import CitiesComponent from './components/CitiesComponent'
 
 function App() {
   return (
-    <div>Hello world</div>
+    <div>
+      <CitiesComponent/>
+    </div>
   );
 }
 

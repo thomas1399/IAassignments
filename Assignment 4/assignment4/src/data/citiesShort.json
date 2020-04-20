@@ -1,0 +1,36 @@
+[{
+    "id": 1,
+    "country": "Thailand",
+    "city": "Wang Hin",
+    "image": "http://dummyimage.com/176x202.jpg/dddddd/000000",
+    "description": "Nulla nisl.",
+    "rating": 3
+  }, {
+    "id": 2,
+    "country": "Portugal",
+    "city": "Seixal",
+    "image": "http://dummyimage.com/187x213.jpg/dddddd/000000",
+    "description": "Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",
+    "rating": 8
+  }, {
+    "id": 3,
+    "country": "Nigeria",
+    "city": "Wuyo",
+    "image": "http://dummyimage.com/146x155.jpg/dddddd/000000",
+    "description": "Integer non velit.",
+    "rating": 5
+  }, {
+    "id": 4,
+    "country": "China",
+    "city": "Hejiang",
+    "image": "http://dummyimage.com/174x158.jpg/ff4444/ffffff",
+    "description": "Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis.",
+    "rating": 3
+  }, {
+    "id": 5,
+    "country": "Indonesia",
+    "city": "Nonggunong",
+    "image": "http://dummyimage.com/103x132.jpg/5fa2dd/ffffff",
+    "description": "Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius.",
+    "rating": 6
+  }]
