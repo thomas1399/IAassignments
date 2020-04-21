@@ -12,6 +12,7 @@ class CitiesComponent extends React.Component{
         }
         this.addCityCallback = this.addCityCallback.bind(this)
         this.handleAddClick = this.handleAddClick.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
     handleAddClick(event){
         event.preventDefault()
@@ -19,8 +20,11 @@ class CitiesComponent extends React.Component{
         ? this.setState({showAdd:false})
         : this.setState({showAdd:true}) 
     }
+    handleDelete(itemId){
+        const cities = this.state.cities.filter(item => item.id !== itemId)
+        this.setState({cities: cities})
+    }
     addCityCallback(callbackData){
-        
         this.setState(prevState =>{
             const newState = prevState.cities
             newState.push(callbackData)
@@ -37,7 +41,7 @@ class CitiesComponent extends React.Component{
 
     }
     render(){
-        const cityList = this.state.cities.map(item => <CityComponent key={item.id} item={item} />)
+        const cityList = this.state.cities.map(item => <CityComponent key={item.id} item={item} onDelete={this.handleDelete}/>)
         return(
         <div>
             {this.state.showAdd 

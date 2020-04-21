@@ -4,6 +4,7 @@ class CityComponent extends React.Component{
     constructor(){
         super()
         this.state = {
+            id: "",
             country: "",
             city: "",
             image: "",
@@ -16,6 +17,7 @@ class CityComponent extends React.Component{
     }
     componentDidMount(){
         this.setState({
+            id: this.props.item.id,
             country: this.props.item.country,
             city: this.props.item.city,
             image: this.props.item.image,
@@ -32,10 +34,8 @@ class CityComponent extends React.Component{
     }
     handleEdit(event){
         const {name, value} = event.target
-        this.setState(prevState => {
-            return({
-                [name]: value,
-            })
+        this.setState({
+            [name]: value,
         })
     }
     render(){
@@ -89,6 +89,7 @@ class CityComponent extends React.Component{
                             <p>{this.state.description}</p>
                             <p>Rating: {this.state.rating}</p> 
                             <button onClick={this.showHideEdit}>Edit</button>
+                            <button onClick={() => this.props.onDelete(this.props.item.id)}>Delete</button>
                         </div>
                 }
             </div>
