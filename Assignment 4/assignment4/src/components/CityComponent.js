@@ -40,7 +40,7 @@ class CityComponent extends React.Component{
     }
     render(){
         return(
-            <div>
+            <div style={this.props.styling}>
                 <h3>{this.state.country + "     " + this.state.city}</h3>
                 <img src={this.state.image} alt="something"></img>
                 {this.state.editing
@@ -95,10 +95,6 @@ class CityComponent extends React.Component{
             </div>
         )
     }
-        
-    
-    
-    
 }
 
 export default CityComponent
