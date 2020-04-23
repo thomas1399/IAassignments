@@ -37,43 +37,57 @@ class AddCityComponent extends React.Component{
         return(
         <div>
             <form>
-                <input 
+                <div className="form-group">
+                    <input 
+                    className="form-control"
                     name="country" 
                     value={this.state.country} 
                     onChange={this.handleChange} 
                     placeholder="Country" 
-                />
-                <br />
+                    />
+                </div>
                 
-                <input 
+                <div className="form-group">
+                    <input 
                     name="city" 
+                    className="form-control"
                     value={this.state.city}
                     onChange={this.handleChange} 
                     placeholder="City" 
-                />
-                <br />
-                <input 
-                    name="image" 
-                    value={this.state.image}
-                    onChange={this.handleChange} 
-                    placeholder="Image" 
-                />
-                <br />
-                <textarea 
-                    name="description" 
-                    value={this.state.description}
-                    onChange={this.handleChange} 
-                    placeholder="Description" 
-                />
-                <br />
-                <input 
-                    name="rating" 
-                    value={this.state.rating}
-                    onChange={this.handleChange} 
-                    placeholder="Rating"
-                />
-                <br />
-                <button onClick= {this.handleSubmit}>Submit</button>
+                    />
+                </div>
+                
+                <div className="form-group">
+                    <input 
+                        name="image" 
+                        className="form-control"
+                        value={this.state.image}
+                        onChange={this.handleChange} 
+                        placeholder="Image" 
+                    />
+                </div>
+                
+                <div className="form-group">
+                    <textarea 
+                        className="form-control"
+                        name="description" 
+                        value={this.state.description}
+                        onChange={this.handleChange} 
+                        placeholder="Description" 
+                    />
+                </div>
+                
+                <div className="form-group">
+                    <input 
+                        className="form-control"
+                        name="rating" 
+                        value={this.state.rating}
+                        onChange={this.handleChange} 
+                        placeholder="Rating"
+                    />
+                </div>
+                
+                <button className="btn btn-primary" onClick= {this.handleSubmit}>Submit</button>
             </form>
 
             {/* <p>{this.state.country + "   " + this.state.city}</p>

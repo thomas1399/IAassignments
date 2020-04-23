@@ -1,5 +1,6 @@
 import React from "react"
 import CityComponent from './CityComponent'
+
 class CityTable extends React.Component{
     constructor(){
         super()
@@ -59,8 +60,7 @@ class CityTable extends React.Component{
     render(){
         
         return(
-            <div>
-                <p>{this.props.filterText}</p>
+            <div className="row">
                 {this.state.rows}
             </div>
             

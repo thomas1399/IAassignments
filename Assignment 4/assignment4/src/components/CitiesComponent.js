@@ -1,5 +1,5 @@
 import React from "react"
-import data from "../data/citiesLong"
+import data from "../data/citiesVeryLong"
 import AddCityComponent from "./AddCityComponent"
 import CityTable from "./CityTable"
 import SearchBar from "./SearchBar"
@@ -38,7 +38,7 @@ class CitiesComponent extends React.Component{
         })
     }
     handleDelete(itemId){
-        alert(itemId)
+        //alert(itemId)
         const newCities = this.state.cities.filter(item => item.id !== itemId)
         this.setState({cities: newCities})
     }
@@ -61,18 +61,30 @@ class CitiesComponent extends React.Component{
     render(){
         // const cityList = this.state.cities.map(item => <CityComponent key={item.id} item={item} onDelete={this.handleDelete}/>)
         return(
-        <div>
-            {this.state.showAdd 
-            ?   <div>
-                    <button onClick={this.handleAddClick}>Cancel</button>
-                    <AddCityComponent currId = {this.state.cities.length} addCityCallback={this.addCityCallback}/>
+        <div className="container-fluid">
+            <div className="navbar row">
+                {this.state.showAdd 
+                ?   <div>
+                        <button className="btn btn-secondary mb-3" onClick={this.handleAddClick}>Cancel</button>
+                        <AddCityComponent currId = {this.state.cities.length} addCityCallback={this.addCityCallback}/>
+                    </div>
+                : 
+                    <div className="col-sm-4 col-md-4 text-center pb-1">
+                        <button className="btn btn-primary" onClick={this.handleAddClick}>Add new entry</button>
+                    </div>
+                }
+                {/* {cityList} */}
+                <div className="col-sm-4 col-md-4 text-center pb-1">
+                    <button className="btn btn-primary " onClick={this.handleSort}>Sort list</button>
                 </div>
-            : 
-                <button onClick={this.handleAddClick}>Add new entry</button>}
-            {/* {cityList} */}
-            <button onClick={this.handleSort}>Sort list</button>
-            <SearchBar filterText = {this.state.filterText} onFilterTextChange = {this.handleFilterTextChange}/>
-            <CityTable items={this.state.cities} onDelete ={this.handleDelete} filterText = {this.state.filterText}/>
+                <SearchBar filterText = {this.state.filterText} onFilterTextChange = {this.handleFilterTextChange}/>
+            </div>
+            <div className="container">
+                <div className="row">
+                    <CityTable items={this.state.cities} onDelete ={this.handleDelete} filterText = {this.state.filterText}/>
+                </div>
+            </div>
+            
         </div>
         )
     }
