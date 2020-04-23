@@ -50,11 +50,7 @@ class CitiesComponent extends React.Component{
     }
     handleDelete(itemId){
         const newCities = this.state.cities.filter(item => item.id !== itemId)
-        this.setState(() => {
-            alert("setting state")
-            return({
-            cities: newCities})
-        })
+        this.setState({cities: newCities})
     }
     addCityCallback(callbackData){
         this.setState(prevState =>{
