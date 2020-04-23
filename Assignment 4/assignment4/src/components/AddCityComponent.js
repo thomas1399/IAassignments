@@ -15,7 +15,7 @@ class AddCityComponent extends React.Component{
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-
+        this.standardText = this.standardText.bind(this)
     }
 
 
@@ -25,11 +25,18 @@ class AddCityComponent extends React.Component{
             [name] : value
         })
     }
-    
+    standardText(text){
+        text = text.toLowerCase()
+        text = text[0].toUpperCase() + text.slice(1)
+        return text 
+    }
     handleSubmit(event){
         event.preventDefault()
         const newObject = this.state
-       // alert(newObject.city)
+        //alert(newObject.city)
+        newObject.country = this.standardText(newObject.country)
+        newObject.city = this.standardText(newObject.city)
+
         newObject.id = this.props.currId + 1
         this.props.addCityCallback(newObject)
     }
@@ -89,9 +96,6 @@ class AddCityComponent extends React.Component{
                 
                 <button className="btn btn-primary" onClick= {this.handleSubmit}>Submit</button>
             </form>
-
-            {/* <p>{this.state.country + "   " + this.state.city}</p>
-            <img src={this.state.image} alt="somthing else"></img> */}
         </div>)
     }
 }

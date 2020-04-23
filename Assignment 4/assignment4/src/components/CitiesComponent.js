@@ -17,6 +17,7 @@ class CitiesComponent extends React.Component{
         this.handleDelete = this.handleDelete.bind(this)
         this.handleFilterTextChange = this.handleFilterTextChange.bind(this)
         this.handleSort = this.handleSort.bind(this)
+        this.handleEdit = this.handleEdit.bind(this)
     }
     handleFilterTextChange(filterText) {
         this.setState({
@@ -31,35 +32,41 @@ class CitiesComponent extends React.Component{
     }
     handleSort(){
         this.setState(prevState => {
-            const sorted = prevState.cities.sort((a,b) => (a.country > b.country) ? 1 : -1)
+            const sorted = prevState.cities.sort((a,b) => (a.country.toLowerCase() > b.country.toLowerCase()) ? 1 : -1)
             return({
                 cities: sorted
             })
         })
     }
+    handleEdit(editedEntry){
+        this.setState(prevState => {
+            var index = prevState.cities.findIndex(el => el.id === editedEntry.id)
+            const newCities = prevState.cities
+            newCities.splice(index, 1, editedEntry)
+            return({
+                cities: newCities
+            })
+        })
+    }
     handleDelete(itemId){
-        //alert(itemId)
         const newCities = this.state.cities.filter(item => item.id !== itemId)
-        this.setState({cities: newCities})
+        this.setState(() => {
+            alert("setting state")
+            return({
+            cities: newCities})
+        })
     }
     addCityCallback(callbackData){
         this.setState(prevState =>{
             const newState = prevState.cities
             newState.push(callbackData)
-            //alert(newState)
             return({
                 cities: newState,
                 showAdd:callbackData.showAdd
             })
         })
-        
-    }
-    componentDidMount(){
-        //alert(this.state.cities[this.state.cities.length - 1].city)
-
     }
     render(){
-        // const cityList = this.state.cities.map(item => <CityComponent key={item.id} item={item} onDelete={this.handleDelete}/>)
         return(
         <div className="container-fluid">
             <div className="navbar row">
@@ -73,7 +80,6 @@ class CitiesComponent extends React.Component{
                         <button className="btn btn-primary" onClick={this.handleAddClick}>Add new entry</button>
                     </div>
                 }
-                {/* {cityList} */}
                 <div className="col-sm-4 col-md-4 text-center pb-1">
                     <button className="btn btn-primary " onClick={this.handleSort}>Sort list</button>
                 </div>
@@ -81,7 +87,7 @@ class CitiesComponent extends React.Component{
             </div>
             <div className="container">
                 <div className="row">
-                    <CityTable items={this.state.cities} onDelete ={this.handleDelete} filterText = {this.state.filterText}/>
+                    <CityTable items={this.state.cities} onDelete ={this.handleDelete} filterText = {this.state.filterText} onEdit = {this.handleEdit}/>
                 </div>
             </div>
             

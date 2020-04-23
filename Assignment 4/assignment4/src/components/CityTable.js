@@ -2,19 +2,19 @@ import React from "react"
 import CityComponent from './CityComponent'
 
 class CityTable extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             rows: []
         }
-        this.modifyText = this.modifyText.bind()
+        this.modifyText = this.modifyText.bind(this)
     }
     componentDidMount(){
         this.setState(() => {
             const newRows = []
             this.props.items.forEach((item) => {
                 newRows.push(
-                    <CityComponent styling={{display: "auto"}} key={item.id} item={item} onDelete={this.props.onDelete}/>
+                    <CityComponent styling={{display: "auto"}} key={item.id} item={item} onDelete={this.props.onDelete} onEdit={this.props.onEdit}/>
                 )
             })
             return({
@@ -32,7 +32,7 @@ class CityTable extends React.Component{
             if(filterText.length === 0){
                 this.props.items.forEach((item) => {
                     newRows.push(
-                        <CityComponent styling={{display: "block"}} key={item.id} item={item} onDelete={this.props.onDelete}/>
+                        <CityComponent styling={{display: "block"}} key={item.id} item={item} onDelete={this.props.onDelete} onEdit={this.props.onEdit}/>
                     )
                 })
                 return({
@@ -44,11 +44,11 @@ class CityTable extends React.Component{
                     if(item.country.indexOf(this.modifyText(filterText)) === -1 
                     && item.city.indexOf(this.modifyText(filterText)) === -1 )
                         newRows.push(
-                            <CityComponent styling={{display: "none"}} key={item.id} item={item} onDelete={this.props.onDelete}/>
+                            <CityComponent styling={{display: "none"}} key={item.id} item={item} onDelete={this.props.onDelete} onEdit={this.props.onEdit}/>
                         )
                     else
                         newRows.push(
-                            <CityComponent styling={{display: "block"}} key={item.id} item={item} onDelete={this.props.onDelete}/>
+                            <CityComponent styling={{display: "block"}} key={item.id} item={item} onDelete={this.props.onDelete} onEdit={this.props.onEdit}/>
                         )    
                 })
                 return({
@@ -60,9 +60,13 @@ class CityTable extends React.Component{
     render(){
         
         return(
-            <div className="row">
+            <div>
+                {/* <button onClick={this.props.onEdit}>Cacat</button> */}
+                <div className="row">
                 {this.state.rows}
+                </div>
             </div>
+            
             
         )
     }

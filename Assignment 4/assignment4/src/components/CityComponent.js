@@ -31,6 +31,7 @@ class CityComponent extends React.Component{
                 editing: !prevState.editing
             })
         })
+        this.props.onEdit(this.state)
     }
     handleEdit(event){
         const {name, value} = event.target
