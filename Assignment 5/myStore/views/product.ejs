@@ -5,7 +5,13 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>My Store</h1>
+    <h1>Add products</h1>
+    <form action="/product/addProduct" method="POST">
+      <input type="text" name="name">
+      <input type="text" name="price">
+      <input type="text" name="quantity" >
+      <input type="submit" value="Add">
+    </form>
     <table>
       <tbody>
         <% if(data.length) 
@@ -15,6 +21,9 @@
               <td><%=data[i].name%></td>
               <td><%=data[i].price%></td>
               <td><%=data[i].quantity%></td>
+              <td>
+                <a href="/product/deleteProduct/<%=data[i].id%>">Delete</a>
+              </td>
             </tr>
             <%}%>
       </tbody>

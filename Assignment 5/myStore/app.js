@@ -3,14 +3,20 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+
+
+var flash = require("express-flash");
+var mysql = require("mysql");
+var connection = require("./db_connection");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var addProductRouter = require('./routes/product');
+//var productRouter = require('./routes/product');
 
 var app = express();
 
-var db = require('./db_connection')
-db.dbConnect()
 
 
 // view engine setup
@@ -23,8 +29,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  cookie: { maxAge: 60000 },
+  store: new session.MemoryStore,
+  saveUninitialized: true,
+  resave: 'true',
+  secret: 'secret'
+}))
+
+app.use(flash());
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/product', addProductRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
