@@ -12,7 +12,8 @@ var connection = require("./db_connection");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var addProductRouter = require('./routes/product');
+var productRouter = require('./routes/product');
+var cartRouter = require('./routes/cart')
 //var productRouter = require('./routes/product');
 
 var app = express();
@@ -41,8 +42,8 @@ app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/product', addProductRouter);
-
+app.use('/product', productRouter);
+app.use('/cart', cartRouter)
 
 
 // catch 404 and forward to error handler

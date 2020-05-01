@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Store</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>My Cart</h1>
+    <form action="/cart/buyCart" method="POST">
+        <input type="hidden" name="data" value="<%=data[0].name%>">
+        <button type="submit">Finish purchase</button>
+    </form>
+    <table style="border: 1px solid black; text-align: center;">
+        <thead>
+          <tr>
+            <td style="padding-right: 10px;"><h3>ID</h3></td>
+            <td style="padding-right: 10px;"><h3>Name</h3></td>
+            <td style="padding-right: 10px;"><h3>Price</h3></td>
+            <td style="padding-right: 10px;"><h3>Available Quantity</h3></td>
+          </tr> 
+        </thead>
+        <tbody>
+          <% if(data.length) 
+            for(var i = 0; i < data.length; i++){ %>
+              <tr>
+                <td style="padding-right: 10px;"><%=data[i].id%></td>
+                <td style="padding-right: 10px;"><%=data[i].name%></td>
+                <td style="padding-right: 10px;"><%=data[i].price%></td>
+                <td style="padding-right: 10px;"><%=data[i].price%></td>
+                <td style="padding-right: 10px;">
+                  <form action='/cart/removeFromCart' method="POST">
+                    <input type="hidden" name='id' value="<%=i%>">
+                    <input type="submit" value="X">
+                  </form>
+  
+                </td>
+              </tr>
+              <%}%>
+        </tbody>
+        
+      </table>
+    
+    
+  </body>
+</html>

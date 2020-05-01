@@ -3,21 +3,20 @@ var router = express.Router();
 var dbConn  = require('../db_connection');
 var savedData
 var showProductsQuery = 'SELECT * FROM products'
-router.get(['/', '/product'], function(req, res, next) {
+router.get(['/', '/product', '/cart'], function(req, res) {
 
     dbConn.query(showProductsQuery, function(err,rows)     {
-
         if(err) {
             req.flash('error', err);
-            savedData = ''
-            res.render('product',{data:''});
+            req.session.data = ''
+            res.render('product',{data:  req.session.data});
 
             //console.log("rows");
 
         } else {
-           // console.log(rows);
-            savedData = rows
-            res.render('product',{data:rows});
+            req.session.data = rows
+           // console.log(req.session.data);
+            res.render('product',{data:  req.session.data});
         }
     });
 });
@@ -34,7 +33,7 @@ router.post('/addProduct', function(req, res, next) {
 
         req.flash('error', "Please enter name");
         res.render('product', {
-            data:savedData
+            data:req.session.data
         })
     }
 
@@ -55,7 +54,7 @@ router.post('/addProduct', function(req, res, next) {
 
                 // render to add.ejs
                 res.render('product', {
-                    data:savedData
+                    data:req.session.data
                 })
             } else {
                 req.flash('success', 'Product successfully added');
