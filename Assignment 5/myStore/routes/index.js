@@ -4,8 +4,8 @@ var dbConn  = require('../db_connection');
 
 var showProductsQuery = 'SELECT * FROM products'
 
-router.get(['/', '/addToCart'], function(req, res, next) {
-
+router.get(['/'], function(req, res) {
+    console.log(req.sessionID)
     dbConn.query(showProductsQuery, function(err,rows)     {
 
         if(err) {

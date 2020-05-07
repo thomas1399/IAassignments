@@ -6,10 +6,21 @@
   </head>
   <body>
     <h1>My Cart</h1>
+    <%if(data.length) {%>
     <form action="/cart/buyCart" method="POST">
-        <input type="hidden" name="data" value="<%=data[0].name%>">
+        
+          <input type="hidden" name="data" value="<%=data[0].name%>">
+          
         <button type="submit">Finish purchase</button>
+        
     </form>
+    <%} else {%>
+      <form method="GET" action="/">
+        <label>Your cart is empty, go back to the store to buy something!</label>
+        <input type="submit" value="Go back"> 
+      </form>
+    
+    <%}%>
     <table style="border: 1px solid black; text-align: center;">
         <thead>
           <tr>
@@ -28,6 +39,7 @@
                 <td style="padding-right: 10px;"><%=data[i].price%></td>
                 <td style="padding-right: 10px;"><%=data[i].price%></td>
                 <td style="padding-right: 10px;">
+                    <!-- <button onclick="/cart/removeFromCart(<%=i%>)"></button> -->
                   <form action='/cart/removeFromCart' method="POST">
                     <input type="hidden" name='id' value="<%=i%>">
                     <input type="submit" value="X">

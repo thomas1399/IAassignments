@@ -3,13 +3,18 @@ var router = express.Router();
 var dbConn  = require('../db_connection');
 var currCart = []
 
-router.get('/', function(req, res){
+router.get(['/', '/cart'], function(req, res){
     if(req.session.cart)
         res.render('cart', {data: req.session.cart})
     else
         res.render('cart', {data: ""})
 })
-
+// function removeFromCart(id){ 
+//     console.log('clicked')
+//     currCart.splice(id, 1)
+//     req.session.cart = currCart
+//     res.redirect('/cart')
+// }
 router.post('/removeFromCart', function(req, res){
     var id = req.body.id
     currCart.splice(id, 1)
@@ -20,7 +25,7 @@ router.post('/removeFromCart', function(req, res){
 router.post('/addToCart', function(req, res){
     var item = req.session.data[req.body.id];
     if(currCart.find(x => x.id === item.id))
-        console.log('Iteam already added')
+        console.log('Item already added')
     else{
         currCart.push(item)
         req.session.cart = currCart
@@ -36,19 +41,36 @@ router.post('/buyCart', function(req, res){
         idArray.push(element.id)
     });
     //console.log(idArray)
-    var deleteQuery = 'DELETE FROM products WHERE (id) IN (?)'
-    dbConn.query(deleteQuery, [idArray], function(err, result){
-        if(err){
-            console.log(err)
-            res.redirect('/cart')
-        }
-        else{
-            console.log("Succesful purchase")
-            req.session.cart = ""
-            currCart = []
-            res.redirect('/')
-        }
-    })
+    if(idArray.length){
+        var checkQuery = "SELECT * FROM products WHERE (id) IN (?)"
+        dbConn.query(checkQuery, [idArray], function(err, rows){
+            if(rows.length === idArray.length)
+            {
+                var deleteQuery = 'DELETE FROM products WHERE (id) IN (?)'
+                dbConn.query(deleteQuery, [idArray], function(err, result){
+                    if(err){
+                        console.log(err)
+                        res.redirect('/cart')
+                    }
+                    else{
+                        console.log("Succesful purchase")
+                        req.session.cart = []
+                        currCart = []
+                        res.redirect('/')
+                    }
+                })
+            }
+            else{
+                console.log("Some items are missing")
+                req.session.cart = rows
+                res.redirect('cart')
+            }
+        })
+    }
+    else
+        res.redirect('cart')
+   
+    
 })
 
 
