@@ -2,42 +2,71 @@
 <html>
   <head>
     <title>My Store</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
+  <script>
+    function reload(){
+      setTimeout(5000)
+      document.getElementById("purchaseMessage").setAttribute("display", "none")
+    }
+  </script>
   <body>
-    <h1>My Store</h1>
-    <form action="/cart"  method="GET">
-      <input type="submit" value="My Cart">
-    </form>
-    <table style="border: 1px solid black; text-align: center;">
-      <thead>
-        <tr>
-          <td style="padding-right: 10px;"><h3>ID</h3></td>
-          <td style="padding-right: 10px;"><h3>Name</h3></td>
-          <td style="padding-right: 10px;"><h3>Price</h3></td>
-          <td style="padding-right: 10px;"><h3>Available Quantity</h3></td>
-        </tr> 
-      </thead>
-      <tbody>
-        <% if(data.length) 
-          for(var i = 0; i < data.length; i++){ %>
-            <tr>
-              <td style="padding-right: 10px;"><%=data[i].id%></td>
-              <td style="padding-right: 10px;"><%=data[i].name%></td>
-              <td style="padding-right: 10px;"><%=data[i].price%></td>
-              <td style="padding-right: 10px;"><%=data[i].price%></td>
-              <td style="padding-right: 10px;">
-                <form action='/cart/addToCart' method="POST">
-                  <input type="hidden" name='id' value="<%=i%>">
-                  <input type="submit" value="+">
-                </form>
-
-              </td>
-            </tr>
-            <%}%>
-      </tbody>
+    <div class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header pull-left">
+          <span class="navbar-brand">My Store</h1>
+        </div>
+        <ul class="nav navbar-nav navbar-right pull-right">
+          <li>
+            <form action="/cart"  method="GET">
+            <button class="btn btn-primary navbar-btn" type="submit">My Cart</button>
+          </form>
+          </li>
+        </ul> 
+      </div>
       
-    </table>
+    </div>
+    <p id="purchaseMessage"><%= messages.purchaseMessage%></p>
+
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td ><h3>ID</h3></td>
+            <td ><h3>Name</h3></td>
+            <td ><h3>Price</h3></td>
+            <!-- <td style="padding-right: 10px;"><h3>Available Quantity</h3></td> -->
+          </tr> 
+        </thead>
+        <tbody>
+          <% if(data.length) 
+            for(var i = 0; i < data.length; i++){ %>
+              <tr>
+                <td class="lead"><%=data[i].id%></td>
+                <td class="lead"><%=data[i].name%></td>
+                <td class="lead"><%=data[i].price%></td>
+                <!-- <td style="padding-right: 10px;"><%=data[i].price%></td> -->
+                <td class="lead">
+                  <%var found = cart.some(el => el.id === data[i].id)
+                  if(!found){%>
+                    <form action='/cart/addToCart' method="POST">
+                      <input type="hidden" name='id' value="<%=i%>">
+                      <button class="btn btn-primary" >+</button>
+                    </form>
+                  <%}else{%>
+                    <button class="btn btn-success" >Added</button>
+                  <%}%>
+                </td>
+              </tr>
+              <%}%>
+              
+              
+        </tbody>
+      </table>
+    </div>
+    
     
     
   </body>

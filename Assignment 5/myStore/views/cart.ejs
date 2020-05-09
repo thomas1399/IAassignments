@@ -2,56 +2,91 @@
 <html>
   <head>
     <title>My Store</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>My Cart</h1>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <script>
+      function reload(){
+        setTimeout(5000)
+        document.getElementById("purchaseMessage").setAttribute("display", "none")
+      }
+    </script>
+
+  <body onload="reload()">
+
+    <div class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header pull-left">
+          <span class="navbar-brand">My Shopping Cart</h1>
+        </div>
+      </div>
+    </div>
+    <p id="purchaseMessage"><%= messages.purchaseMessage%></p>
     <%if(data.length) {%>
-    <form action="/cart/buyCart" method="POST">
-        
+      <div class="row text-center">
+        <form action="/cart/buyCart" method="POST">
           <input type="hidden" name="data" value="<%=data[0].name%>">
-          
-        <button type="submit">Finish purchase</button>
-        
-    </form>
-    <%} else {%>
-      <form method="GET" action="/">
-        <label>Your cart is empty, go back to the store to buy something!</label>
-        <input type="submit" value="Go back"> 
-      </form>
+          <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#purchasePopup">Finish purchase</button>
+        </form>
+      </div>
     
-    <%}%>
-    <table style="border: 1px solid black; text-align: center;">
+      <!-- <div id="purchasePopup" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Transaction Status</h4>
+            </div>
+            <div class="modal-body">
+              <p><%=messages.purchaseMessage%>></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div> -->
+    
+
+    <div class="table-responsive">
+      <table class="table table-striped">
         <thead>
           <tr>
             <td style="padding-right: 10px;"><h3>ID</h3></td>
             <td style="padding-right: 10px;"><h3>Name</h3></td>
             <td style="padding-right: 10px;"><h3>Price</h3></td>
-            <td style="padding-right: 10px;"><h3>Available Quantity</h3></td>
           </tr> 
         </thead>
+  
         <tbody>
           <% if(data.length) 
             for(var i = 0; i < data.length; i++){ %>
               <tr>
-                <td style="padding-right: 10px;"><%=data[i].id%></td>
-                <td style="padding-right: 10px;"><%=data[i].name%></td>
-                <td style="padding-right: 10px;"><%=data[i].price%></td>
-                <td style="padding-right: 10px;"><%=data[i].price%></td>
-                <td style="padding-right: 10px;">
-                    <!-- <button onclick="/cart/removeFromCart(<%=i%>)"></button> -->
+                <td class="lead"><%=data[i].id%></td>
+                <td class="lead"><%=data[i].name%></td>
+                <td class="lead"><%=data[i].price%></td>
+                <td class="lead">
                   <form action='/cart/removeFromCart' method="POST">
                     <input type="hidden" name='id' value="<%=i%>">
-                    <input type="submit" value="X">
+                    <button class="btn btn-danger">Remove</button>
                   </form>
   
                 </td>
               </tr>
               <%}%>
-        </tbody>
-        
+        </tbody> 
       </table>
+    </div>
     
-    
+
+    <%} else {%>
+      <form method="GET" action="/">
+        <label class="lead">Your cart is empty, go back to the store to buy something!</label>
+        <button class="btn btn-secondary">Go Back</button> 
+      </form>
+    <%}%>
+
   </body>
 </html>

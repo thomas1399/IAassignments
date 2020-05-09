@@ -2,17 +2,19 @@
 <html>
   <head>
     <title>My Store</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
     <h1>Add products</h1>
     <form action="/product/addProduct" method="POST">
-      <input type="text" name="name">
-      <input type="text" name="price">
-      <input type="text" name="quantity" >
+      <input type="text" name="name" placeholder="Name">
+      <input type="text" name="price" placeholder="Price">
+      <!-- <input type="text" name="quantity" > -->
       <input type="submit" value="Add">
     </form>
-    <table>
+    <table class="table table-bordered">
       <tbody>
         <% if(data.length) 
           for(var i = 0; i < data.length; i++){ %>
@@ -20,7 +22,7 @@
               <td><%=data[i].id%></td>
               <td><%=data[i].name%></td>
               <td><%=data[i].price%></td>
-              <td><%=data[i].quantity%></td>
+              <!-- <td><%=data[i].quantity%></td> -->
               <td>
                 <a href="/product/deleteProduct/<%=data[i].id%>">Delete</a>
               </td>

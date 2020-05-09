@@ -1,35 +1,30 @@
 var express = require('express');
 var router = express.Router();
 var dbConn  = require('../db_connection');
-var currCart = []
+var flash = require('express-flash')
 
 router.get(['/', '/cart'], function(req, res){
-    if(req.session.cart)
-        res.render('cart', {data: req.session.cart})
-    else
-        res.render('cart', {data: ""})
+    if(!req.session.cart)
+        req.session.cart = []
+    res.render('cart', {data: req.session.cart})
 })
-// function removeFromCart(id){ 
-//     console.log('clicked')
-//     currCart.splice(id, 1)
-//     req.session.cart = currCart
-//     res.redirect('/cart')
-// }
+
 router.post('/removeFromCart', function(req, res){
     var id = req.body.id
-    currCart.splice(id, 1)
-    req.session.cart = currCart
+    req.session.cart.splice(id, 1)
     res.redirect('/cart')
 })
 
 router.post('/addToCart', function(req, res){
     var item = req.session.data[req.body.id];
-    if(currCart.find(x => x.id === item.id))
+    if(!req.session.cart)
+        req.session.cart = []
+    if(req.session.cart.find(x => x.id === item.id))
         console.log('Item already added')
     else{
-        currCart.push(item)
-        req.session.cart = currCart
-        console.log(req.session.cart)
+        req.session.data.splice()
+        req.session.cart.push(item)
+        //console.log(req.session.cart)
     }
     res.redirect('/')
 })
@@ -49,26 +44,26 @@ router.post('/buyCart', function(req, res){
                 var deleteQuery = 'DELETE FROM products WHERE (id) IN (?)'
                 dbConn.query(deleteQuery, [idArray], function(err, result){
                     if(err){
-                        console.log(err)
+                        console.log("Error at deletion")
                         res.redirect('/cart')
                     }
                     else{
-                        console.log("Succesful purchase")
                         req.session.cart = []
                         currCart = []
+                        req.flash('purchaseMessage', 'Purchase successful!')
                         res.redirect('/')
                     }
                 })
             }
             else{
-                console.log("Some items are missing")
                 req.session.cart = rows
-                res.redirect('cart')
+                req.flash('purchaseMessage', 'Some items are unavailable, your cart has been updated!')
+                res.redirect('/cart')
             }
         })
     }
     else
-        res.redirect('cart')
+        res.redirect('/cart')
    
     
 })

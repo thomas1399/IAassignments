@@ -4,11 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var popup = require("node-popup")
 
 
 var flash = require("express-flash");
-var mysql = require("mysql");
-var connection = require("./db_connection");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -31,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-  cookie: { maxAge: 60000 },
+  cookie: { maxAge: 3600 * 1000 },
   store: new session.MemoryStore,
   saveUninitialized: true,
   resave: 'true',
