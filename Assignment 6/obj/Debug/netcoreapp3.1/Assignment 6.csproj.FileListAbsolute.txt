@@ -1,0 +1,37 @@
+D:\VS projects\IAassignments\Assignment 6\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\VS projects\IAassignments\Assignment 6\bin\Debug\netcoreapp3.1\appsettings.json
+D:\VS projects\IAassignments\Assignment 6\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\VS projects\IAassignments\Assignment 6\bin\Debug\netcoreapp3.1\Assignment 6.exe
+D:\VS projects\IAassignments\Assignment 6\bin\Debug\netcoreapp3.1\Assignment 6.deps.json
+D:\VS projects\IAassignments\Assignment 6\bin\Debug\netcoreapp3.1\Assignment 6.runtimeconfig.json
+D:\VS projects\IAassignments\Assignment 6\bin\Debug\netcoreapp3.1\Assignment 6.runtimeconfig.dev.json
+D:\VS projects\IAassignments\Assignment 6\bin\Debug\netcoreapp3.1\Assignment 6.dll
+D:\VS projects\IAassignments\Assignment 6\bin\Debug\netcoreapp3.1\Assignment 6.pdb
+D:\VS projects\IAassignments\Assignment 6\bin\Debug\netcoreapp3.1\Assignment 6.Views.dll
+D:\VS projects\IAassignments\Assignment 6\bin\Debug\netcoreapp3.1\Assignment 6.Views.pdb
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.csprojAssemblyReference.cache
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.csproj.CoreCompileInputs.cache
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.MvcApplicationPartsAssemblyInfo.cache
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.RazorAssemblyInfo.cache
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.RazorAssemblyInfo.cs
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.AssemblyInfoInputs.cache
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.AssemblyInfo.cs
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.TagHelpers.input.cache
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.TagHelpers.output.cache
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.RazorCoreGenerate.cache
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewImports.cshtml.g.cs
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.RazorTargetAssemblyInfo.cache
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.RazorTargetAssemblyInfo.cs
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.Views.pdb
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\staticwebassets\Assignment 6.StaticWebAssets.Manifest.cache
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\staticwebassets\Assignment 6.StaticWebAssets.xml
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.dll
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.pdb
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.genruntimeconfig.cache
+D:\VS projects\IAassignments\Assignment 6\obj\Debug\netcoreapp3.1\Assignment 6.csproj.CopyComplete
