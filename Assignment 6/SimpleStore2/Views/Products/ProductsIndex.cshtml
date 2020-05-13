@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "ProductsIndex";
+
+}
+
+@{
+    if (TempData["message"] != null)
+    {
+        <script type="text/javascript">
+        alert(@Html.Raw(Json.Encode(TempData["message"])));
+        </script>
+    }
+}
+
+<body>
+    <table class="table table-striped m-3">
+        <thead>
+            <tr>
+                <th scope="col">ProductId</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                SimpleStore.Models.Products prod = (SimpleStore.Models.Products)Session["products"];
+                foreach (SimpleStore.Models.Product prop in prod.products)
+                {
+                    <tr>
+                        <th scope="row">@prop.id</th>
+                        <td>@prop.name</td>
+                        <td>@prop.price</td>
+                        <td>@prop.description</td>
+                        <td>
+                            @{
+
+                                SimpleStore.Models.ShoppingCart cart = (SimpleStore.Models.ShoppingCart)Session["cart"];
+                                if (cart.cart.Find(x => x.id == prop.id) == null)
+                                {
+                                    <form action="/Products/addToCart" method="post">
+                                        <input type="hidden" name="id" value="@prop.id" />
+                                        <input type="hidden" name="name" value="@prop.name" />
+                                        <input type="hidden" name="price" value="@prop.price" />
+                                        <input type="hidden" name="description" value="@prop.description" />
+                                        <input class="btn btn-primary" type="submit" value="Add" />
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form action="/Products/removeFromCart" method="post">
+                                        <input type="hidden" name="id" value="@prop.id" />
+                                        <input class="btn btn-danger" type="submit" value="Remove" />
+                                    </form>
+                                }
+                            }
+
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</body>
+

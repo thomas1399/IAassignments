@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Welcome to my store!</h2>
+            <p class="lead">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec mauris vitae felis semper dignissim consectetur ut sapien. Pellentesque gravida suscipit felis sit amet convallis. Suspendisse tempor dapibus turpis vitae dapibus. Etiam sit amet nunc lobortis, fringilla erat vel, tempus turpis. Aliquam rutrum sed sapien eget commodo. Donec ultrices lectus vel consectetur consectetur. Nam non pretium tellus. Vivamus vehicula dui eget lacus fermentum egestas. Fusce lacinia tincidunt dolor, non dapibus urna commodo ac. Pellentesque et odio orci. Vestibulum ullamcorper eros tincidunt euismod placerat.
+
+            </p>
+            <input type="button" class="btn btn-primary" value="Start Shopping" onclick="@("window.location.href='" + @Url.Action("ProductsIndex", "Products") + "'");" />
+        </div>
+
+    </div>

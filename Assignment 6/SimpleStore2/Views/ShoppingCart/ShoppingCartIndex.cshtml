@@ -1,0 +1,56 @@
+﻿@model SimpleStore.Models.ShoppingCart
+@{
+    ViewBag.Title = "ShoppingCartIndex";
+}
+
+    <body>
+        @if (Model.cart.Any())
+        {
+            float totalSum = 0;
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ProductId</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (SimpleStore.Models.Product p in Model.cart)
+                    {
+                        totalSum += p.price;
+                        <tr>
+                            <th scope="row">@p.id</th>
+                            <td>@p.name</td>
+                            <td>@p.price</td>
+                            <td>
+                                <form action="/ShoppingCart/removeFromCart" method="post">
+                                    <input type="hidden" name="id" value="@p.id" />
+                                    <input class="btn btn-danger" type="submit" value="Remove" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div>
+                <h4 class="text-center">Total sum: @totalSum</h4>
+                <form action="/ShoppingCart/finishPurchase" method="post">
+                    <input class="btn btn-success center-block" type="submit" value="Finish Purchase" />
+                </form>
+            </div>
+            
+        } else
+        {
+            <p class="lead text-center">Your cart is empty, go back to the store to add items to your shopping cart!</p>
+            <form action="/Products/ProductsIndex" method="post">
+                <input class="btn btn-primary center-block" type="submit" value="Go back" />
+            </form>
+        }
+
+    </body>
+
+
+
